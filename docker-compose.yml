@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+
+  messaging:
+    network_mode: "host"
+    image: "eclipse-mosquitto"
+
+  dashboard:
+    build:
+      context: ./
+      dockerfile: "Dockerfile.node-red"
+    network_mode: "host"
+    environment: 
+      - FLOWS=/usr/src/node-red/myflows/flows_2021-03-26.json 
+    volumes:
+      - "${PWD}/flows:/usr/src/node-red/myflows"
+    depends_on: 
+      - "messaging"
+
+  inference:
+    build: 
+      context: ./
+      args: 
+        - BASE_IMAGE=${BASE_IMAGE}
+    image: tensorrt_demos:l4t-r${L4T_VERSION}
+    network_mode: "host"
+    runtime: "nvidia"
+    environment: 
+      - DISPLAY=${DISPLAY}
+    devices: 
+      - "/dev/video0:/dev/video0"
+    volumes: 
+      - "/tmp/argus_socket:/tmp/argus_socket"
+      - "/tmp/.X11-unix/:/tmp/.X11-unix"
+    depends_on: 
+      - "dashboard"
+    command: python3 trt_yolo_mqtt_test10.py -m yolov4-416 --usb 0
+
