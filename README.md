@@ -24,6 +24,23 @@ Install docker-compose (You need to have docker-compose with the runtime paramte
   ```
   $ python3 -m pip install --user docker-compose
   ```
+4. Add ~/.local/bin directory in your PATH.
+5. Comfirm docker-compose installed.
+  ```
+  $ docker-compose --version
+  ```
+6. Add "default-runtime": "nvidia" to your /etc/docker/daemon.json configuration file to build the TensorRT plugin.
+  ```
+{
+    "runtimes": {
+        "nvidia": {
+            "path": "nvidia-container-runtime",
+            "runtimeArgs": []
+        }
+    },
+    "default-runtime": "nvidia"
+}
+  ```
 
 Licenses
 --------
