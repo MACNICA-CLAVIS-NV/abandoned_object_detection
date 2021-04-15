@@ -50,6 +50,19 @@ Install docker-compose (You need to have docker-compose with the runtime paramte
   $ chmod +x ./scripts/*.sh
   ```
 
+Usage
+-----
+
+Start the services of the application
+```
+$ ./scripts/compose-up.sh
+```
+
+Stop the services of the application
+```
+$ ./scripts/compose-down.sh
+```
+
 Licenses
 --------
 
