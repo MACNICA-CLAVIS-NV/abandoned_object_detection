@@ -16,4 +16,4 @@ sudo docker run \
     -v /tmp/argus_socket:/tmp/argus_socket \
     -v /tmp/.X11-unix/:/tmp/.X11-unix \
     -v ${HOME}:${HOME} \
-    tensorrt_demos:l4t-r${L4T_VERSION}
+    abandoned_object_detection:l4t-r${L4T_VERSION}
