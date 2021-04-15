@@ -57,6 +57,7 @@ Start the services of the application
 ```
 $ ./scripts/compose-up.sh
 ```
+You can see the dashboard at [http://localhost:1880/ui](http://localhost:1880/ui)
 
 Stop the services of the application
 ```
