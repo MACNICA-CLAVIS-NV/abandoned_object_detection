@@ -29,7 +29,7 @@ Install docker-compose (You need to have docker-compose with the runtime paramte
   ```
   $ docker-compose --version
   ```
-6. Add "default-runtime": "nvidia" to your /etc/docker/daemon.json configuration file to build the TensorRT plugin.
+6. Add "default-runtime": "nvidia" to your /etc/docker/daemon.json configuration file to build the TensorRT plugin. **And restart the docker service or reboot your systme.**
   ```
 {
     "runtimes": {
@@ -40,6 +40,14 @@ Install docker-compose (You need to have docker-compose with the runtime paramte
     },
     "default-runtime": "nvidia"
 }
+  ```
+7. Clone this repository.
+  ```
+  $ git clone https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection
+  ```
+8. Add the execution permission to the shell scripts.
+  ```
+  $ chmod +x ./scripts/*.sh
   ```
 
 Licenses
