@@ -25,7 +25,7 @@ Install docker-compose (You need to have docker-compose with the runtime paramte
   $ python3 -m pip install --user docker-compose
   ```
 4. Add ~/.local/bin directory in your PATH.
-5. Comfirm docker-compose installed.
+5. Comfirm docker-compose installed successfully.
   ```
   $ docker-compose --version
   ```
