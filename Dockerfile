@@ -5,7 +5,7 @@
 ARG BASE_IMAGE=nvcr.io/nvidia/l4t-base:r32.5.0
 FROM ${BASE_IMAGE}
 
-ARG REPOSITORY_NAME=tensorrt_demos
+ARG REPOSITORY_NAME=abandoned_object_detection
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG C.UTF-8
