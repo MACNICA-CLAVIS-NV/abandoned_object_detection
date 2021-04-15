@@ -3,7 +3,7 @@
 Prerequisites
 -------------
 
-- NVIDIA Jetson with JetPack 4.5 and later
+- NVIDIA Jetson with JetPack 4.5 or later
 - USB camera
 
 Installation
