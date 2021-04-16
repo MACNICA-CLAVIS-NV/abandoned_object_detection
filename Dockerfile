@@ -35,14 +35,14 @@ RUN apt-get update && \
 
 RUN pip3 install \
         setuptools \
-        'Cython<=0.29.22' \
+        Cython \
         wheel
 RUN pip3 install numpy
 RUN pip3 install \
-        'Pillow>=5.2.0' \
-        'wget>=3.2' \
-        'pycuda>=2017.1.1' \
-        'onnx==1.4.1' \
+        Pillow>=5.2.0 \
+        wget>=3.2 \
+        pycuda>=2017.1.1 \
+        onnx==1.4.1 \
         paho-mqtt
 
 RUN mkdir /${REPOSITORY_NAME}
