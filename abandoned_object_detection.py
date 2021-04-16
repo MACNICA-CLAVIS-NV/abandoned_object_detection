@@ -166,22 +166,24 @@ def loop_and_detect(cam, trt_yolo, conf_th, vis, \
         # perform abandoned object detection
         elif 0 not in clss:
             print("only objects are detected")
-            ## Here needs to be added the function of the abandonment ##
-            add_centroid_classes_metrics2 = compute_pixel_distance(boxes, clss, cls_dict)
-            #print("add_centroid_classes_metrics:", add_centroid_classes_metrics2)
-            for row in add_centroid_classes_metrics2:
-                x_min2 = int(float(row[0]))
-                y_min2 = int(float(row[1]))
-                x_max2 = int(float(row[2]))
-                y_max2 = int(float(row[3]))
-                
-                print("add_centroid_classes_metrics2:", row)
-                color = (0,0,255)
-                cv2.rectangle(img, (x_min2,y_min2), (x_max2,y_max2), color, 2)
-                cv2.putText(img, 'abandoned', (x_min2 + 1, y_min2 - 2),
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 2)
-                
-                publish_bboxes_New(row, 'abandoned', client, topic)
+            if (24 in clss) or (25 in clss) or (26 in clss) or (28 in clss) or (67 in clss):
+                ## Here needs to be added the function of the abandonment ##
+                add_centroid_classes_metrics2 = compute_pixel_distance(boxes, clss, cls_dict)
+                #print("add_centroid_classes_metrics:", add_centroid_classes_metrics2)
+                for row in add_centroid_classes_metrics2:
+                    if (row[6]=='backpack') or (row[6]=='umbrella') or (row[6]=='handbag') or \
+                        (row[6]=='suitcase') or (row[6]=='cell phone'):
+                        x_min2 = int(float(row[0]))
+                        y_min2 = int(float(row[1]))
+                        x_max2 = int(float(row[2]))
+                        y_max2 = int(float(row[3]))
+                        
+                        print("add_centroid_classes_metrics2:", row)
+                        color = (0,0,255)
+                        cv2.rectangle(img, (x_min2,y_min2), (x_max2,y_max2), color, 2)
+                        cv2.putText(img, 'abandoned', (x_min2 + 1, y_min2 - 2),
+                                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 2)
+                        publish_bboxes_New(row, 'abandoned', client, topic)
 
 
         # one or more persons and objects are detected
@@ -226,29 +228,29 @@ def loop_and_detect(cam, trt_yolo, conf_th, vis, \
 
                                         frame_id_holder.append(frame_id)
 
-                                        # (B, G, R)
-                                        color = (0,255,255)
+                                        if (objectX[6]=='backpack') or (objectX[6]=='umbrella') or (objectX[6]=='handbag') or \
+                                            (objectX[6]=='suitcase') or (objectX[6]=='cell phone'):
+                                            # (B, G, R)
+                                            color = (0,255,255)
 
-                                        x_min2 = int(float(objectX[0]))
-                                        y_min2 = int(float(objectX[1]))
-                                        x_max2 = int(float(objectX[2]))
-                                        y_max2 = int(float(objectX[3]))
-
-                                        #cv2.rectangle(img, (100,100), (200,200), color, 2)
-
-                                        cv2.rectangle(img, (x_min2,y_min2), (x_max2,y_max2), color, 2)
-                                        cv2.putText(img, 'warning', (x_min2 + 1, y_min2 - 2),
-                                                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 2)
-                                        
-                                        print("frame_id_holder:", frame_id_holder)
-                                        if frame_id >= (fps * ((min(frame_id_holder) / fps) + AOD_config.ABANDONMENT_DURATION)):
-
-                                            color = (0,0,255)
-                                            cv2.rectangle(img, (x_min2,y_min2), (x_max2,y_max2), color, 2)
-                                            cv2.putText(img, 'abandoned', (x_min2 + 1, y_min2 - 2),
-                                                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 2)
+                                            x_min2 = int(float(objectX[0]))
+                                            y_min2 = int(float(objectX[1]))
+                                            x_max2 = int(float(objectX[2]))
+                                            y_max2 = int(float(objectX[3]))
                                             
-                                            publish_bboxes_New(objectX, 'abandoned', client, topic)
+                                            #cv2.rectangle(img, (100,100), (200,200), color, 2)
+
+                                            cv2.rectangle(img, (x_min2,y_min2), (x_max2,y_max2), color, 2)
+                                            cv2.putText(img, 'warning', (x_min2 + 1, y_min2 - 2),
+                                                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 2)
+                                            print("frame_id_holder:", frame_id_holder)
+                                            if frame_id >= (fps * ((min(frame_id_holder) / fps) + AOD_config.ABANDONMENT_DURATION)):
+
+                                                color = (0,0,255)
+                                                cv2.rectangle(img, (x_min2,y_min2), (x_max2,y_max2), color, 2)
+                                                cv2.putText(img, 'abandoned', (x_min2 + 1, y_min2 - 2),
+                                                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 2)
+                                                publish_bboxes_New(objectX, 'abandoned', client, topic)
 
         cv2.imshow(WINDOW_NAME, img)
         toc = time.time()
