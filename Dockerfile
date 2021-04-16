@@ -1,5 +1,5 @@
 #
-# Dockerfile to build the image of the tensorrt_demos application
+# Dockerfile to build the image of the abandoned_object_detection application
 #
 
 ARG BASE_IMAGE=nvcr.io/nvidia/l4t-base:r32.5.0
