@@ -47,6 +47,7 @@ Install docker-compose (You need to have docker-compose with the runtime paramte
   ```
 8. Add the execution permission to the shell scripts.
   ```
+  $ cd abandoned_object_detection
   $ chmod +x ./scripts/*.sh
   ```
 
