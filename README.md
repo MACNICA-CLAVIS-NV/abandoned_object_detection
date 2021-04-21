@@ -1,5 +1,17 @@
 # abandoned_object_detection
 
+Table of Contents
+-----------------
+- [Description](#description)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Troubleshooting](#troubleshooting)
+- [Licenses](#licenses)
+
+Description
+-----------
+
 Prerequisites
 -------------
 
@@ -64,6 +76,9 @@ Stop the services of the application
 ```
 $ ./scripts/compose-down.sh
 ```
+
+Troubleshooting
+---------------
 
 Licenses
 --------
