@@ -79,6 +79,34 @@ $ ./scripts/compose-down.sh
 
 Troubleshooting
 ---------------
+If you see the following error,
+```
+inference_1  | -------------------------------------------------------------------
+inference_1  | PyCUDA ERROR: The context stack was not empty upon module cleanup.
+inference_1  | -------------------------------------------------------------------
+inference_1  | A context was still active when the context stack was being
+inference_1  | cleaned up. At this point in our execution, CUDA may already
+inference_1  | have been deinitialized, so there is no way we can finish
+inference_1  | cleanly. The program will be aborted now.
+inference_1  | Use Context.pop() to avoid this problem.
+inference_1  | -------------------------------------------------------------------
+```
+please run the YOLOv4 detection alone with the following commands.
+
+1. Execute a shell in the conatainer.
+```
+$ ./scripts/docker_run.sh 
+```
+2. Run the YOLOv4 object detection application.
+```
+# python3 trt_yolo.py -m yolov4-416 --usb 0
+```
+3. Exit from the shell in the container.
+```
+# exit
+```
+
+Then restat the abandoned_object_detection application again.
 
 Licenses
 --------
