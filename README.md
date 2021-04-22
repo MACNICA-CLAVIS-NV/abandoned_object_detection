@@ -99,7 +99,7 @@ $ ./scripts/docker_run.sh
 ```
 2. Run the YOLOv4 object detection application.
 ```
-# python3 trt_yolo.py -m yolov4-416 --usb 0
+# python3 -c "import pycuda.autoinit"
 ```
 3. Exit from the shell in the container.
 ```
