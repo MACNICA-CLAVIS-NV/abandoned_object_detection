@@ -97,7 +97,7 @@ please run the PyCUDA auto initialization alone with the following commands.
 ```
 $ ./scripts/docker_run.sh 
 ```
-2. Run the YOLOv4 object detection application.
+2. Run the following python command.
 ```
 # python3 -c "import pycuda.autoinit"
 ```
