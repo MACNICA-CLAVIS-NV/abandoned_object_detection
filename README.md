@@ -106,7 +106,7 @@ $ ./scripts/docker_run.sh
 # exit
 ```
 
-Then restat the abandoned_object_detection application again.
+Then restat the abandoned_object_detection application.
 
 Licenses
 --------
