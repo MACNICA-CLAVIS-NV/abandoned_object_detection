@@ -91,7 +91,7 @@ inference_1  | cleanly. The program will be aborted now.
 inference_1  | Use Context.pop() to avoid this problem.
 inference_1  | -------------------------------------------------------------------
 ```
-please run the YOLOv4 detection alone with the following commands.
+please run the PyCUDA auto initialization alone with the following commands.
 
 1. Execute a shell in the conatainer.
 ```
