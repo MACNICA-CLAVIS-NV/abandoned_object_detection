@@ -16,9 +16,11 @@ This is an Abandoned Object Detection (AOD) using a TensorRT-optimized YOLOv4(41
 Here's an example of the screenshot of the AOD demo.
 
 -First display : warning
+
 <img src="https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection/blob/master/pictures/warning_backpack_cellphone.png">
 
 -Last display : abandoned
+
 <img src="https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection/blob/master/pictures/abandoned_backpack_cellphone.png">
 
 
