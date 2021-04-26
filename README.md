@@ -41,11 +41,11 @@ Here's an example of the screenshot of the AOD demo.
 
 Here's the overview for the AOD system.
 
-### overview
+**overview**
   
   <img src="https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection/blob/master/pictures/the%20overview%20for%20the%20system.png">
   
-### the flow for system processing
+**the flow for system processing**
   
   <img src="https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection/blob/master/pictures/the%20flow%20for%20the%20system_English.png">
 
