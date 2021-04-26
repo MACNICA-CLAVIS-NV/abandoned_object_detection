@@ -21,7 +21,7 @@ Here's an example of the screenshot of the AOD demo.
 
 -Last display : abandoned
 
-<img src="https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection/blob/master/pictures/abandoned_backpack_cellphone_test.png">
+<img src="https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection/blob/master/pictures/abandoned_backpack_cellphone.png">
 
 
 Prerequisites
