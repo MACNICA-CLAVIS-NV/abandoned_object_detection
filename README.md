@@ -15,7 +15,7 @@ This is an Abandoned Object Detection (AOD) using a TensorRT-optimized YOLOv4(41
 
 Here's an example of the screenshot of the AOD demo.
 
-<The flow of the AOD>
+~The flow of the AOD~
 
 ・First display : object detection
 
