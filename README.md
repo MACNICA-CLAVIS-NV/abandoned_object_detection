@@ -12,12 +12,12 @@ Table of Contents
 Description
 -----------
 This is an Abandoned Object Detection (AOD) using a TensorRT-optimized YOLOv4(416 frame size) as the object detection model.
-Note that this AOD system is for the objects in the below:
-- **backpack**
-- **umbrella**
-- **handback**
-- **suitcase**
-- **cell phone***
+Note that this AOD system is for the five objects below:
+1 **backpack**
+2 **umbrella**
+3 **handback**
+4 **suitcase**
+5 **cell phone**
 
 Here's an example of the screenshot of the AOD demo.
 
