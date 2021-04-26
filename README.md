@@ -19,11 +19,11 @@ Here's an example of the screenshot of the AOD demo.
 
 <img src="https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection/blob/master/pictures/ObjectDetection_backpack_cellphone_person.png">
 
-・Second display : "warning" text and yellow bounding box
+・Second display : "warning" text and yellow bounding box for the objects that may be left behind
 
 <img src="https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection/blob/master/pictures/warning_backpack_cellphone.png">
 
-・Last display : "abandoned" and red bounding box
+・Last display : "abandoned" text and red bounding box for the abandoned objects 
 
 <img src="https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection/blob/master/pictures/abandoned_backpack_cellphone.png">
 
