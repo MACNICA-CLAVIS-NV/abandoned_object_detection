@@ -47,7 +47,7 @@ Here's the overview for the AOD system.
   
 <the flow for system processing>
   
-  <img src="https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection/blob/master/pictures/the%20flow%20for%20the%20system.png">
+  <img src="https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection/blob/master/pictures/the%20flow%20for%20the%20system_English.png">
 
 
 Prerequisites
