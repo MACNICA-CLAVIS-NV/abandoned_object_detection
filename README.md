@@ -15,19 +15,39 @@ This is an Abandoned Object Detection (AOD) using a TensorRT-optimized YOLOv4(41
 
 Here's an example of the screenshot of the AOD demo.
 
+<The flow of the AOD>
+
 ・First display : object detection
 
-                  Person, cellphone and backpack are detected in the following situation
+                  Person, cellphone and backpack are detected in the following situation.
+                  When persons or objects are detected, bounding boxes are displayed and the person or object's names are displayed at the top.                  
 
 <img src="https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection/blob/master/pictures/ObjectDetection_backpack_cellphone_person.png">
 
-・Second display : "warning" text and yellow bounding box for the objects that may be left behind
+・Second display : "Warning" text and yellow bounding boxes for the objects that may be left behind
+
+                  After that, the yellow bounding boxes are displayed for the target objects 
+                  after a certain distance and time has passed between the centroids of the detected person and the objects.
+                  At that time, the word "warning", which means the objects may be left behind, is displayed.
 
 <img src="https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection/blob/master/pictures/warning_backpack_cellphone.png">
 
-・Last display : "abandoned" text and red bounding box for the abandoned objects 
+・Last display : "Abandoned" text and red bounding boxes for the abandoned objects 
+
+                  After that, the red bounding boxes with "abandoned" text will be displayed for the abandoned objects when a certain amount of time has passed.
 
 <img src="https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection/blob/master/pictures/abandoned_backpack_cellphone.png">
+
+
+Here's the overview for the AOD system.
+
+<overview>
+  
+  <img src="https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection/blob/master/pictures/the%20overview%20for%20the%20system.png">
+  
+<the flow for system processing>
+  
+  <img src="https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection/blob/master/pictures/the%20flow%20for%20the%20system.png">
 
 
 Prerequisites
