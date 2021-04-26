@@ -17,7 +17,7 @@ Here's an example of the screenshot of the AOD demo.
 
 ・First display : object detection
 
-                  Person, cellphone and backpack are detected in this situation
+Person, cellphone and backpack are detected in this situation
 
 <img src="https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection/blob/master/pictures/ObjectDetection_backpack_cellphone_person.png">
 
