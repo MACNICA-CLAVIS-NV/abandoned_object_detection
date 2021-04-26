@@ -11,6 +11,16 @@ Table of Contents
 
 Description
 -----------
+This is an Abandoned Object Detection (AOD) using a TensorRT-optimized YOLOv4(416 frame size) as the object detection model.
+
+Here's an example of the screenshot of the AOD demo.
+
+-First display : warning
+<img src="https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection/blob/master/pictures/warning_backpack_cellphone.png">
+
+-Last display : abandoned
+<img src="https://github.com/MACNICA-CLAVIS-NV/abandoned_object_detection/blob/master/pictures/abandoned_backpack_cellphone.png">![image](https://user-images.githubusercontent.com/58497391/116022905-17cbe900-a686-11eb-9cbd-01738f98352d.png)
+
 
 Prerequisites
 -------------
