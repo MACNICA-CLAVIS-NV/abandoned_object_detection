@@ -173,7 +173,6 @@ Report OSS activity of Abandoned Object Detection & FAQ
 
 - We release the event report that you can understand in 5 minutes!
   Title : Let's develop the Abandoned Object Detection System using a TensorRT-optimized YOLOv4 as the object detection model.
-  
   https://www.macnica.co.jp/business/semiconductor/articles/nvidia/136416/
   
 - FAQ
