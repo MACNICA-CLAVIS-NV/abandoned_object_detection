@@ -9,7 +9,7 @@ Table of Contents
 - [Usage](#usage)
 - [Troubleshooting](#troubleshooting)
 - [Licenses](#licenses)
-- [Report OSS activity of Abandoned Object Detection & FAQ](#report OSS activity of Abandoned Object Detection & FAQ)
+- [Contents](#contents)
 
 Description
 -----------
@@ -169,9 +169,10 @@ Licenses
 - This application was inherited the TensorRT based YOLO implementation from [jkjung-avt](https://github.com/jkjung-avt)/[tensorrt_demos](https://github.com/jkjung-avt/tensorrt_demos). The software is under the MIT license.
 - The [jkjung-avt](https://github.com/jkjung-avt)/[tensorrt_demos](https://github.com/jkjung-avt/tensorrt_demos) referenced source code of [NVIDIA/TensorRT](https://github.com/NVIDIA/TensorRT) samples to develop most of the demos in this repository.  Those NVIDIA samples are under [Apache License 2.0](https://github.com/NVIDIA/TensorRT/blob/master/LICENSE).
 
-Report OSS activity of Abandoned Object Detection & FAQ
+Contents
 --------
 
+### Report OSS activity of Abandoned Object Detection & FAQ
 - We release the event report that you can understand in 5 minutes!
   
   Title : Let's develop the Abandoned Object Detection System using a TensorRT-optimized YOLOv4 as the object detection model.
