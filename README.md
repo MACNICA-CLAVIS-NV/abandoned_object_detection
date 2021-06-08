@@ -173,15 +173,15 @@ Contents
 --------
 
 ### Report OSS activity of Abandoned Object Detection & FAQ
-- We release the event report that you can understand in 5 minutes!
+- A brief report
   
-  Title : Let's develop the Abandoned Object Detection System using a TensorRT-optimized YOLOv4 as the object detection model.
+  Title : Let's develop the Abandoned Object Detection System using a TensorRT-optimized YOLOv4 as the model.
           https://www.macnica.co.jp/business/semiconductor/articles/nvidia/136416/
   
   
 - FAQ
 
-  Title : Q&A summary for implement and deployment of the imaging analysia with NVIDIA Jetson products
+  Title : Q&A summary for implementation and deployment of the imaging analysis with NVIDIA Jetson products
           https://www.macnica.co.jp/business/semiconductor/articles/nvidia/136357/
 
 
