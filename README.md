@@ -179,4 +179,7 @@ Report OSS activity of Abandoned Object Detection & FAQ
   
 - FAQ
 
+  Title : Q&A summary for implement and deployment of the imaging analysia with NVIDIA Jetson products
+  https://www.macnica.co.jp/business/semiconductor/articles/nvidia/136357/
+
 
