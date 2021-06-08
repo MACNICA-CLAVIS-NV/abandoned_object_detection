@@ -1,4 +1,5 @@
 # abandoned_object_detection
+<img src="gif/wasuremono_demo_backpack_cellphone.gif">
 
 Table of Contents
 -----------------
