@@ -3,7 +3,8 @@
 source scripts/l4t_version.sh
 
 BASE_IMAGE="nvcr.io/nvidia/l4t-base:r$L4T_VERSION"
-BASE_DEVEL="nvcr.io/nvidian/nvidia-l4t-base:r$L4T_VERSION"
+# BASE_DEVEL="nvcr.io/nvidian/nvidia-l4t-base:r$L4T_VERSION"
+BASE_DEVEL="nvcr.io/nvidia/nvidia-l4t-base:r$L4T_VERSION"
 
 if [ $L4T_RELEASE -eq 32 ]; then
 	if [ $L4T_REVISION_MAJOR -eq 4 ]; then
@@ -26,11 +27,11 @@ if [ $L4T_RELEASE -eq 32 ]; then
 	
 elif [ $L4T_RELEASE -eq 34 ]; then
 	if [[ $L4T_REVISION_MAJOR -eq 1 && $L4T_REVISION_MINOR -eq 1 ]]; then
-		BASE_DEVEL="nvcr.io/nvidia/l4t-base:r34.1"
+		# BASE_DEVEL="nvcr.io/nvidian/nvidia-l4t-base:r34.1.1"
 		BASE_IMAGE=$BASE_DEVEL
 	elif [ $L4T_REVISION_MAJOR -lt 2 ]; then
 		#BASE_DEVEL="nvcr.io/nvidian/nvidia-l4t-base:focal_CUDA_11.4.13_008"
-		BASE_DEVEL="nvcr.io/nvidia/nvidia-l4t-base:r34.1"
+		# BASE_DEVEL="nvcr.io/nvidian/nvidia-l4t-base:r34.1"
 		BASE_IMAGE="nvcr.io/nvidia/l4t-base:r34.1"
 	fi
 	
