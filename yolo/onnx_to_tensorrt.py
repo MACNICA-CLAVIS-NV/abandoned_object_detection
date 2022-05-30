@@ -56,10 +56,17 @@ import argparse
 
 import tensorrt as trt
 
-from plugins import get_input_wh, add_yolo_plugins
+from yolo_to_onnx import DarkNetParser, get_h_and_w
+from plugins import add_yolo_plugins, add_concat
 
 
 MAX_BATCH_SIZE = 1
+
+
+def get_c(layer_configs):
+    """Find input channels of the yolo model from layer configs."""
+    net_config = layer_configs['000_net']
+    return net_config.get('channels', 3)
 
 
 def load_onnx(model_name):
@@ -86,9 +93,13 @@ def set_net_batch(network, batch_size):
     return network
 
 
-def build_engine(model_name, category_num, do_int8, dla_core, verbose=False):
+def build_engine(model_name, do_int8, dla_core, verbose=False):
     """Build a TensorRT engine from ONNX using the older API."""
-    net_w, net_h = get_input_wh(model_name)
+    cfg_file_path = model_name + '.cfg'
+    parser = DarkNetParser()
+    layer_configs = parser.parse_cfg_file(cfg_file_path)
+    net_c = get_c(layer_configs)
+    net_h, net_w = get_h_and_w(layer_configs)
 
     print('Loading the ONNX file...')
     onnx_data = load_onnx(model_name)
@@ -108,11 +119,16 @@ def build_engine(model_name, category_num, do_int8, dla_core, verbose=False):
             return None
         network = set_net_batch(network, MAX_BATCH_SIZE)
 
-        print('Adding yolo_layer plugins...')
-        network = add_yolo_plugins(
-            network, model_name, category_num, TRT_LOGGER)
+        print('Adding yolo_layer plugins.')
+        network = add_yolo_plugins(network, model_name, TRT_LOGGER)
 
-        print('Building an engine.  This would take a while...')
+        print('Adding a concatenated output as "detections".')
+        network = add_concat(network, model_name, TRT_LOGGER)
+
+        print('Naming the input tensort as "input".')
+        network.get_input(0).name = 'input'
+
+        print('Building the TensorRT engine.  This would take a while...')
         print('(Use "--verbose" or "-v" to enable verbose logging.)')
         if trt.__version__[0] < '7':  # older API: build_cuda_engine()
             if dla_core >= 0:
@@ -134,10 +150,10 @@ def build_engine(model_name, category_num, do_int8, dla_core, verbose=False):
             config.set_flag(trt.BuilderFlag.FP16)
             profile = builder.create_optimization_profile()
             profile.set_shape(
-                '000_net',                          # input tensor name
-                (MAX_BATCH_SIZE, 3, net_h, net_w),  # min shape
-                (MAX_BATCH_SIZE, 3, net_h, net_w),  # opt shape
-                (MAX_BATCH_SIZE, 3, net_h, net_w))  # max shape
+                'input',                                # input tensor name
+                (MAX_BATCH_SIZE, net_c, net_h, net_w),  # min shape
+                (MAX_BATCH_SIZE, net_c, net_h, net_w),  # opt shape
+                (MAX_BATCH_SIZE, net_c, net_h, net_w))  # max shape
             config.add_optimization_profile(profile)
             if do_int8:
                 from calibrator import YOLOEntropyCalibrator
@@ -165,13 +181,14 @@ def main():
         '-v', '--verbose', action='store_true',
         help='enable verbose output (for debugging)')
     parser.add_argument(
-        '-c', '--category_num', type=int, default=80,
-        help='number of object categories [80]')
+        '-c', '--category_num', type=int,
+        help='number of object categories (obsolete)')
     parser.add_argument(
         '-m', '--model', type=str, required=True,
-        help=('[yolov3|yolov3-tiny|yolov3-spp|yolov4|yolov4-tiny]-'
-              '[{dimension}], where dimension could be a single '
-              'number (e.g. 288, 416, 608) or WxH (e.g. 416x256)'))
+        help=('[yolov3-tiny|yolov3|yolov3-spp|yolov4-tiny|yolov4|'
+              'yolov4-csp|yolov4x-mish|yolov4-p5]-[{dimension}], where '
+              '{dimension} could be either a single number (e.g. '
+              '288, 416, 608) or 2 numbers, WxH (e.g. 416x256)'))
     parser.add_argument(
         '--int8', action='store_true',
         help='build INT8 TensorRT engine')
@@ -181,7 +198,7 @@ def main():
     args = parser.parse_args()
 
     engine = build_engine(
-        args.model, args.category_num, args.int8, args.dla_core, args.verbose)
+        args.model, args.int8, args.dla_core, args.verbose)
     if engine is None:
         raise SystemExit('ERROR: failed to build the TensorRT engine!')
 

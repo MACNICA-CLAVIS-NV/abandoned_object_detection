@@ -16,7 +16,7 @@ from utils.yolo_classes import get_cls_dict
 from utils.camera import add_camera_args, Camera
 from utils.display import open_window, set_display, show_fps
 from utils.visualization import BBoxVisualization
-from utils.yolo_with_plugins import get_input_shape, TrtYOLO
+from utils.yolo_with_plugins import TrtYOLO
 
 
 WINDOW_NAME = 'TrtYOLODemo'
@@ -33,10 +33,14 @@ def parse_args():
         '-c', '--category_num', type=int, default=80,
         help='number of object categories [80]')
     parser.add_argument(
+        '-t', '--conf_thresh', type=float, default=0.3,
+        help='set the detection confidence threshold')
+    parser.add_argument(
         '-m', '--model', type=str, required=True,
-        help=('[yolov3|yolov3-tiny|yolov3-spp|yolov4|yolov4-tiny]-'
-              '[{dimension}], where dimension could be a single '
-              'number (e.g. 288, 416, 608) or WxH (e.g. 416x256)'))
+        help=('[yolov3-tiny|yolov3|yolov3-spp|yolov4-tiny|yolov4|'
+              'yolov4-csp|yolov4x-mish|yolov4-p5]-[{dimension}], where '
+              '{dimension} could be either a single number (e.g. '
+              '288, 416, 608) or 2 numbers, WxH (e.g. 416x256)'))
     parser.add_argument(
         '-l', '--letter_box', action='store_true',
         help='inference with letterboxed image [False]')
@@ -92,13 +96,12 @@ def main():
 
     cls_dict = get_cls_dict(args.category_num)
     vis = BBoxVisualization(cls_dict)
-    h, w = get_input_shape(args.model)
-    trt_yolo = TrtYOLO(args.model, (h, w), args.category_num, args.letter_box)
+    trt_yolo = TrtYOLO(args.model, args.category_num, args.letter_box)
 
     open_window(
         WINDOW_NAME, 'Camera TensorRT YOLO Demo',
         cam.img_width, cam.img_height)
-    loop_and_detect(cam, trt_yolo, conf_th=0.3, vis=vis)
+    loop_and_detect(cam, trt_yolo, args.conf_thresh, vis=vis)
 
     cam.release()
     cv2.destroyAllWindows()

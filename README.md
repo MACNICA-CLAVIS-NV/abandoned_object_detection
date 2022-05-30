@@ -184,4 +184,3 @@ Contents
   Title : Q&A summary for implementation and deployment of the imaging analysis application with NVIDIA Jetson products
           https://www.macnica.co.jp/business/semiconductor/articles/nvidia/136357/
 
-
