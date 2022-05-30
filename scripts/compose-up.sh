@@ -8,6 +8,8 @@ source scripts/docker_base.sh
 
 source scripts/docker_build_jetpack.sh
 
+xhost +
+
 # cp /etc/apt/sources.list.d/nvidia-l4t-apt-source.list .
 # cp /etc/apt/trusted.gpg.d/jetson-ota-public.asc .
 
